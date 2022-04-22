@@ -1,0 +1,9 @@
+[
+  { "name": "Vegitables", "value": "bread" },
+  { "name": "Fast Foods", "value": "fast-food" },
+  { "name": "Spices", "value": "organic-drinks" },
+  { "name": "Beverages", "value": "fresh-meat" },
+  { "name": "Health & Fashion", "value": "ocean-foods" },
+  { "name": "Cleaning", "value": "oranges" },
+  { "name": "Others", "value": "vegetables" }
+]

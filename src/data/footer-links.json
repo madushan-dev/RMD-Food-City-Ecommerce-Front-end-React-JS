@@ -1,0 +1,31 @@
+[
+  {
+    "title": "Categories",
+    "items": [
+      { "title": "Vegitables", "href": "bread" },
+      { "title": "Fast Foods", "href": "fast-food" },
+      { "title": "Spices", "href": "organic-drinks" },
+      { "title": "Beverages", "href": "fresh-meat" },
+      { "title": "Health & Fashion", "href": "ocean-foods" }
+
+    ]
+  },
+  {
+    "title": "Menu",
+    "items": [
+      { "title": "Home", "href": "/" },
+      { "title": "Shop", "href": "/shop" },
+      { "title": "About us", "href": "/about-us" },
+      { "title": "Contact Us", "href": "/contact-us" }
+    ]
+  },
+  {
+    "title": "Quick Links",
+    "items": [
+      { "title": "Wishlist", "href": "/shop/wishlist" },
+      { "title": "Cart", "href": "/shop/cart" },
+      { "title": "Checkout", "href": "/shop/checkout" },
+      { "title": "My Account", "href": "/shop/my-account" }
+    ]
+  }
+]

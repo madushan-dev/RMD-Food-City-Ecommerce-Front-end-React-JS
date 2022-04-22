@@ -1,0 +1,18 @@
+{
+  "HOME": {
+    "title": "Home",
+    "href": "/"
+  },
+  "SHOP": {
+    "title": "Shop",
+    "href": "/shop"
+  },
+  "ABOUT": {
+    "title": "About us",
+    "href": "/about-us"
+  },
+  "CONTACT": {
+    "title": "Contact us",
+    "href": "/contact-us"
+  }
+}
