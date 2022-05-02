@@ -9,15 +9,15 @@ const ReviewItem = ({ data }) => {
     <div className="product-detail-tab__reviews-item">
       <div className="product-detail-tab__reviews-item__avatar">
         <img
-          src={process.env.PUBLIC_URL + data.user.avatar}
+          src={'http://127.0.0.1:8000/images/users/'+data.customers.profile_photo}
           alt="Customer avatar"
         />
-        <Rate defaultValue={5} disabled />
+        <Rate defaultValue={data.rating} disabled />
       </div>
       <div className="product-detail-tab__reviews-item__content">
-        <h5>{data.commentDate}</h5>
-        <h3>{data.user.name}</h3>
-        <p>{data.review}</p>
+        <h5>{data.created_at}</h5>
+        <h3>{data.customers.first_name+" "+data.customers.last_name}</h3>
+        <p>{data.comment}</p>
       </div>
     </div>
   );

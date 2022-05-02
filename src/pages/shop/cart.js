@@ -64,6 +64,7 @@ function cart() {
   const onSubmitCouponFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+ 
   return (
     <LayoutOne title="Shopping Cart">
       <Container>
@@ -113,29 +114,34 @@ function cart() {
                     </tr>
                   </thead>
                   <tbody>
+            
+     
+                    {console.log(data)}
                     {data.map((item, index) => (
+                      
                       <tr key={index}>
                         <td className="table-img">
                           <div className="table-img-wrapper">
                             <img
-                              src={process.env.PUBLIC_URL + item.coverImage}
+                              src={'http://127.0.0.1:8000/images/products/'+item.products[0].product_image}
                               alt="Product image"
                             />
                           </div>
                         </td>
-                        <td className="table-name">{item.name}</td>
+                       
+                        <td className="table-name">{item.products[0].name}</td>
                         <td className="table-price">
-                          {formatCurrency(item.price)}
+                          {formatCurrency(item.products[0].selling_price)}
                         </td>
                         <td>
                           <QuantitySelector
                             max={item.quantity}
                             onChange={(val) => onChangeQuantity(item, val)}
-                            defaultValue={item.cartQuantity}
+                            defaultValue={item.quantity}
                           />
                         </td>
                         <td className="table-total">
-                          {formatCurrency(item.price * item.cartQuantity)}
+                          {formatCurrency(item.products[0].selling_price * item.quantity)}
                         </td>
                         <td className="table-remove">
                           <Tooltip title="Remove product">
@@ -143,7 +149,7 @@ function cart() {
                               onClick={() =>
                                 showModal(
                                   "Are you sure to remove this product from cart",
-                                  item.id
+                                  item.product_id
                                 )
                               }
                               icon={<i className="fal fa-times" />}
@@ -191,19 +197,6 @@ function cart() {
                 <table>
                   <tbody>
                     <tr>
-                      <th>SUBTOTAL</th>
-                      <td>
-                        {formatCurrency(calculateTotalPrice(cartState.data))}
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>SHIPPING</th>
-                      <td>
-                        <p>Free shipping</p>
-                        <p>Calculate shipping</p>
-                      </td>
-                    </tr>
-                    <tr>
                       <th>Total</th>
                       <td>
                         {formatCurrency(calculateTotalPrice(cartState.data))}
@@ -218,11 +211,6 @@ function cart() {
                     </Link>
                   </Button>
                   <span>-</span>
-                  <Button type="link">
-                    <Link href={process.env.PUBLIC_URL + "#"}>
-                      <a>Check out with PayPal</a>
-                    </Link>
-                  </Button>
                 </div>
               </div>
             </div>

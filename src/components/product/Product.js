@@ -110,17 +110,17 @@ function Product({ data, className, type, countdownLast = 100000000 }) {
             <div className="product-tiny-img">
               <Link
                 href={process.env.PUBLIC_URL + `/product/[slug]`}
-                as={process.env.PUBLIC_URL + `/product/${data.slug}`}
+                as={process.env.PUBLIC_URL + `/product/${data.id}`}
               >
                 <a title={data.name}>
-                  <img src={data.coverImage} alt="Product image" />
+                  <img src={'http://127.0.0.1:8000/images/products/'+data.product_image} alt="Product image" />
                 </a>
               </Link>
             </div>
             <div className="product-tiny-content">
               <Link
                 href={process.env.PUBLIC_URL + `/product/[slug]`}
-                as={process.env.PUBLIC_URL + `/product/${data.slug}`}
+                as={process.env.PUBLIC_URL + `/product/${data.id}`}
               >
                 <a className="product-tiny-name" title="Pure Pineapple">
                   {data.name}
@@ -128,8 +128,8 @@ function Product({ data, className, type, countdownLast = 100000000 }) {
               </Link>
               <h3 className="product-tiny-price">
                 {data.discount
-                  ? formatCurrency(data.price - data.discount)
-                  : formatCurrency(data.price)}
+                  ? formatCurrency(data.selling_price - data.discount)
+                  : formatCurrency(data.selling_price)}
                 {data.discount && <del>{formatCurrency(data.price)}</del>}
               </h3>
             </div>
@@ -330,15 +330,15 @@ function Product({ data, className, type, countdownLast = 100000000 }) {
             <div className="product-img">
               <Link
                 href={process.env.PUBLIC_URL + `/product/[slug]`}
-                as={process.env.PUBLIC_URL + `/product/${data.slug}`}
+                as={process.env.PUBLIC_URL + `/product/${data.id}`}
               >
                 <a title={data.name}>
-                  <img src={data.coverImage} alt="Product image" />
+                  <img src={'http://127.0.0.1:8000/images/products/'+data.product_image} alt="Product image" />
                 </a>
               </Link>
             </div>
             <div className="product-content">
-              <h5 className="product-type">{data.category}</h5>
+              <h5 className="product-type">{data.categories.name}</h5>
               <Link
                 href={process.env.PUBLIC_URL + `/product/[slug]`}
                 as={process.env.PUBLIC_URL + `/product/${data.slug}`}
@@ -349,9 +349,9 @@ function Product({ data, className, type, countdownLast = 100000000 }) {
               </Link>
               <h3 className="product-price">
                 {data.discount
-                  ? formatCurrency(data.price - data.discount)
-                  : formatCurrency(data.price)}
-                {data.discount && <del>{formatCurrency(data.price)}</del>}
+                  ? formatCurrency(data.selling_price - data.discount)
+                  : formatCurrency(data.selling_price)}
+                {data.discount && <del>{formatCurrency(data.selling_price)}</del>}
               </h3>
             </div>
             <div className="product-select">

@@ -35,12 +35,16 @@ export const onAddProductToCart = ({
         }
       } else {
         let pData = res.data[0];
+  
+
+ 
         if (pData.cartQuantity + quantity > pData.quantity) {
           onError && onError("Reached maximum number of products");
           getQuantityAvailable(false);
         } else {
           updateCartData(pData.id, {
-            cartQuantity: pData.cartQuantity + quantity,
+            productId: product.id,
+            cartQuantity: quantity
           })
             .then((res) => {
               onSuccess && onSuccess(res);

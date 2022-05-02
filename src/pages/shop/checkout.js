@@ -182,17 +182,6 @@ function checkout() {
                             <Input />
                           </Form.Item>
                         </Col>
-                        <Col span={24}>
-                          <Form.Item name="other-address">
-                            <h3 className="checkout-title">Shipping Address</h3>
-                            <Checkbox>Ship to a different address?</Checkbox>
-                          </Form.Item>
-                        </Col>
-                        <Col span={24}>
-                          <Form.Item label="Order notes (optional)" name="note">
-                            <Input.TextArea />
-                          </Form.Item>
-                        </Col>
                       </Row>
                     </Form>
                   </div>
@@ -202,13 +191,14 @@ function checkout() {
                     <h3 className="checkout-title">Your order</h3>
                     <table className="checkout-total__table">
                       <tbody>
+                        {console.log(data)}
                         {data.map((item, index) => (
                           <tr key={index}>
                             <td>
-                              {item.name} x {item.cartQuantity}
+                              {item.products[0].name} x {item.quantity}
                             </td>
                             <td className="-bold ">
-                              {formatCurrency(item.price * item.cartQuantity)}
+                              {formatCurrency(item.products[0].selling_price * item.quantity)}
                             </td>
                           </tr>
                         ))}
@@ -216,13 +206,6 @@ function checkout() {
                           <th>SUBTOTAL</th>
                           <td className="-bold -color">
                             {formatCurrency(calculateTotalPrice(data))}
-                          </td>
-                        </tr>
-                        <tr>
-                          <th>SHIPPING</th>
-                          <td>
-                            <p>Free shipping</p>
-                            <p>Calculate shipping</p>
                           </td>
                         </tr>
                         <tr>

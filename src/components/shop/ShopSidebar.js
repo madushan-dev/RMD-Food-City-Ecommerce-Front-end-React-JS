@@ -50,6 +50,8 @@ function ShopSidebar({ showShortcut, style }) {
   const onChooseTag = (val) => {
     dispatch(setCurrentTag(val));
   };
+
+  
   return (
     <div style={style} className="shop-sidebar">
       <ShopSidebarSection className="-departments" title="Departments">

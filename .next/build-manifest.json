@@ -31,10 +31,20 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/contact-us": [
+    "/product/[slug]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/contact-us.js"
+      "static/chunks/pages/product/[slug].js"
+    ],
+    "/shop": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/shop.js"
+    ],
+    "/shop/cart": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/shop/cart.js"
     ]
   },
   "ampFirstPages": []

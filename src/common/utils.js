@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export const formatCurrency = (price, locales = "us-US", currency = "USD") => {
+export const formatCurrency = (price, locales = "us-US", currency = "LKR") => {
   return new Intl.NumberFormat(locales, {
     style: "currency",
     currency: currency,
@@ -9,7 +9,7 @@ export const formatCurrency = (price, locales = "us-US", currency = "USD") => {
 
 export const renderParam = (paramName, paramValue) => {
   if (paramValue && paramValue !== "" && paramValue !== null) {
-    return `&${paramName}=${paramValue}`;
+    return `LKR ${paramName}=${paramValue}`;
   }
   return "";
 };

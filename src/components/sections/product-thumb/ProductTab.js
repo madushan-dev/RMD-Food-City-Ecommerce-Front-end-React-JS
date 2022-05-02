@@ -78,7 +78,7 @@ function ProductTab({
             {renderTabContent()}
           </TabPane>
           {headerCategories.map((item, index) => (
-            <TabPane tab={item} key={item}>
+            <TabPane tab={item.name} key={item.value}>
               {renderTabContent()}
             </TabPane>
           ))}

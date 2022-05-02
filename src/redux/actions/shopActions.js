@@ -195,6 +195,7 @@ export const fetchProductDetailRequest = (slug) => {
         dispatch(fetchProductDetailSuccess(res.data));
       })
       .catch((err) => {
+       
         dispatch(fetchProductDetailFail(err));
       });
   };

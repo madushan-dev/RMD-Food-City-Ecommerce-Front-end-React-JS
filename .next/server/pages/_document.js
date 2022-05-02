@@ -835,7 +835,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/document */ "./node_modules/next/document.js");
 /* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_document__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "C:\\Users\\Madushan\\Downloads\\DESIGN~1.0-R\\DESIGN~1.0-R\\~GETYO~1\\OGAMI-~1\\ogami\\src\\pages\\_document.js";
+var _jsxFileName = "C:\\Users\\Madushan\\Desktop\\Level 3 Sem 1\\Group Project\\Development\\front-end\\src\\pages\\_document.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 

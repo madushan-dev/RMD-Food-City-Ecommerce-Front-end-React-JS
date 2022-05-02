@@ -10,11 +10,17 @@ export const fetchCartData = (cartId) => {
 };
 
 export const fetchProductIdCartData = (pid) => {
-  let endpoint = API_URL + url + "?" + renderParam("productId", pid);
+
+
+  let endpoint = `http://127.0.0.1:8000/api/cart?product=${pid}`;
+
+  
   return axiosService.get(endpoint);
 };
 
 export const addCartData = (data) => {
+
+
   let endpoint = API_URL + url;
   return axiosService.post(endpoint, data);
 };
@@ -25,6 +31,9 @@ export const removeCartData = (cartId) => {
 };
 
 export const updateCartData = (cartId, data) => {
-  let endpoint = API_URL + url + `/${cartId}`;
-  return axiosService.patch(endpoint, data);
+ 
+  console.log(data);
+  let endpoint = API_URL + url;
+  return axiosService.post(endpoint, data);
+
 };

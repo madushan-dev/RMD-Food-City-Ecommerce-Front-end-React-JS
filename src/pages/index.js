@@ -50,6 +50,8 @@ export default function homepage5() {
       })
     );
   }, [currentProductTabsCategory.featuredProducts]);
+
+  
   return (
     <LayoutFive
       title="RMD Food City | Online Shopping in Badulla"
@@ -75,7 +77,7 @@ export default function homepage5() {
               featuredProducts: val,
             })
           }
-          headerCategories={categories.slice(0, 4).map((item) => item.name)}
+          headerCategories={categories.slice(0, 4).map((item) => item)}
           headerTitle="Latest Products"
           className="-coffee"
         />

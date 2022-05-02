@@ -54,7 +54,7 @@
           content: "\f00c";
           font-family: "Font Awesome 5 Pro";
           margin-right: emCal(16, 10);
-          color: setColor(green);
+          color: setColor(#d9534f);
         }
       }
     }
@@ -77,7 +77,7 @@
     &__price {
       margin-bottom: emCal(16, 30);
       h5 {
-        @include typo($fsz: emCal(16, 24), $color: setColor(green), $fw: 500);
+        @include typo($fsz: emCal(16, 24), $color: setColor(#d9534f), $fw: 500);
         margin-right: emCal(24, 15);
       }
       del {
@@ -104,18 +104,18 @@
         border-width: 2px;
         text-transform: uppercase;
         font-family: getFontWeight(600);
-        color: setColor(green);
+        color: setColor(#d9534f);
         &.active {
-          background-color: setColor(green);
+          background-color: setColor(#d9534f);
           color: #fff;
           border-color: transparent;
         }
         &:first-child {
           margin-bottom: emCal(13, 10);
-          color: setColor(green);
-          border-color: setColor(green);
+          color: setColor(#d9534f);
+          border-color: setColor(#d9534f);
           &:hover {
-            background-color: setColor(green);
+            background-color: setColor(#d9534f);
             color: #fff;
           }
         }
@@ -192,7 +192,7 @@
       .slick-current {
         .slide-item {
           img {
-            border: 1px solid setColor(green);
+            border: 1px solid setColor(#d9534f);
           }
         }
       }
@@ -232,7 +232,7 @@
             font-family: getFontWeight(600);
           }
           &-active {
-            background-color: setColor(green);
+            background-color: setColor(#d9534f);
             .ant-tabs-tab-btn {
               color: #fff;
             }

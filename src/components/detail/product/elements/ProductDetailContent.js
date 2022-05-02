@@ -162,21 +162,16 @@ export default function ProductDetailContent({ data, type }) {
   }
   return (
     <div className="product-detail-content">
-      <h5 className="product-type">{data.category}</h5>
+      <h5 className="product-type">{data.categories.name}</h5>
       <h2 className="product-detail-content__name">{data.name}</h2>
-      <p className="product-detail-content__description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor
-        {/* Change to {data.description} */}
-      </p>
-      <div className="product-detail-content__delivery">Free delivery</div>
+  
       <h3 className="product-detail-content__price">
-        {data.discount && <del>{formatCurrency(data.price)}</del>}
+        {data.discount && <del>{formatCurrency(data.selling_price)}</del>}
         <div className="product-detail-content__price-discount">
           <h5>
             {data.discount
-              ? formatCurrency(data.price - data.discount)
-              : formatCurrency(data.price)}
+              ? formatCurrency(data.selling_price - data.discount)
+              : formatCurrency(data.selling_price)}
           </h5>
           <span>
             <Rate defaultValue={data.rate} />

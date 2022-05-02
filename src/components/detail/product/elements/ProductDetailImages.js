@@ -34,24 +34,7 @@ function ProductDetailImages({ type, images }) {
       })}`}
     >
       <div className="product-detail-images-big">
-        <Slider asNavFor={nav2} ref={(c) => setNav1(c)} {...slider1Settings}>
-          {images &&
-            images.map((img, index) => (
-              <div key={index} className="slide-item">
-                <img src={process.env.PUBLIC_URL + img} alt="Product image" />
-              </div>
-            ))}
-        </Slider>
-      </div>
-      <div className="product-detail-images-small">
-        <Slider asNavFor={nav1} ref={(c) => setNav2(c)} {...slider2Settings}>
-          {images &&
-            images.map((img, index) => (
-              <div key={index} className="slide-item">
-                <img src={process.env.PUBLIC_URL + img} alt="Product image" />
-              </div>
-            ))}
-        </Slider>
+        <img src={'http://127.0.0.1:8000/images/products/'+images} alt="Product image" />
       </div>
     </div>
   );

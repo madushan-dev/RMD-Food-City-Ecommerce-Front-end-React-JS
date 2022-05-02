@@ -30,10 +30,11 @@ function ProductDetailLayout({ data, type, hideTab, style }) {
     );
   }
   return (
+   
     <div className="product-detail" style={style}>
       <Row gutter={30}>
         <Col md={12}>
-          <ProductDetailImages images={data.images} />
+          <ProductDetailImages images={data.product_image} />
         </Col>
         <Col md={12}>
           <ProductDetailContent data={data} />
@@ -41,7 +42,7 @@ function ProductDetailLayout({ data, type, hideTab, style }) {
         <Col xs={24} md={24}>
           {!hideTab && (
             <ProductDetailTab
-              fullDescription={data.fullDescription}
+              fullDescription={data.description}
               reviews={data.reviews}
             />
           )}
