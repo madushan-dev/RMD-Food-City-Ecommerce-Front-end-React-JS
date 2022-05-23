@@ -31,20 +31,15 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/product/[slug]": [
+    "/auth/login": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/product/[slug].js"
+      "static/chunks/pages/auth/login.js"
     ],
-    "/shop": [
+    "/auth/register": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/shop.js"
-    ],
-    "/shop/cart": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/shop/cart.js"
+      "static/chunks/pages/auth/register.js"
     ]
   },
   "ampFirstPages": []

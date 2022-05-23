@@ -61,6 +61,7 @@
       @include typo($fsz: emCal(16, 14), $color: setColor(green), $fw: 600);
       letter-spacing: emCal(14, 2.8);
       margin-bottom: emCal(14, 10);
+      color:#d2b30b;
     }
     h1 {
       @include typo($fsz: emCal(16, 60), $fw: 600);
@@ -69,10 +70,12 @@
     h3 {
       @include typo($fsz: emCal(16, 30), $color: setColor(green), $fw: 600);
       margin-bottom: emCal(30, 50);
+      color: #d2b30b;
       span {
         font-size: emCal(30, 18);
         color: setShadeColor(medium);
         font-family: getFontWeight(500);
+        color: #d2b30b;
       }
     }
     .ant-btn {
@@ -149,7 +152,8 @@
       .hero-slider-content {
         padding: emCal(16, 28) emCal(16, 15);
         h1 {
-          font-size: emCal(16, 60);
+          font-size: emCal(16, 50);
+          color:white;
         }
       }
     }

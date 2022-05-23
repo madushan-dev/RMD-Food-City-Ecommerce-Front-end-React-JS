@@ -100,7 +100,7 @@ function HeroSliderOne({ data }) {
                       <img
                         src={
                           process.env.PUBLIC_URL +
-                          "/assets/images/hero-slider/one/1.png"
+                          "/assets/images/banners/banner1.png"
                         }
                         alt="Hero slider image"
                       />

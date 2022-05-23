@@ -83,6 +83,7 @@ export default function homepage5() {
         />
       </Container>
       <DowThree />
+      <BannerFour data={bannerData.five} />
       <Container>
         <Row gutter={30} style={{ marginBottom: 70 / 16 + "rem" }}>
           <Col md={8}>

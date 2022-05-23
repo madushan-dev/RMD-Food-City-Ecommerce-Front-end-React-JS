@@ -69,13 +69,7 @@ const ShopHeader = ({ title, getViewPerPage, getCurrentSort, hideView }) => {
           >
             <i className="fas fa-th-large" />
           </a>
-          <a
-            onClick={(e) => onViewChage(e, "list")}
-            className={classNames({ active: view === "list" })}
-            href="#"
-          >
-            <i className="fas fa-th-list" />
-          </a>
+      
         </div>
       )}
     </div>

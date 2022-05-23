@@ -1,9 +1,15 @@
 [
   { "name": "Fast Foods", "value": "1" },
-  { "name": "Vegitables", "value": "2" },
-  { "name": "Spices", "value": "3" },
-  { "name": "Beverages", "value": "4" },
-  { "name": "Health & Fashion", "value": "5" },
-  { "name": "Household", "value": "6" },
-  { "name": "Others", "value": "7" }
+  { "name": "Biscuits", "value": "2" },
+  { "name": "Dry Foods", "value": "3" },
+  { "name": "Oils & Cooking", "value": "4" },
+  { "name": "Vegitables", "value": "5" },
+  { "name": "Spices", "value": "6" },
+  { "name": "Beverages", "value": "7" },
+  { "name": "Health & Fashion", "value": "8" },
+  { "name": "Household", "value": "9" },
+  { "name": "Stationary", "value": "10" },
+  { "name": "Others", "value": "11" }
+  
+  
 ]

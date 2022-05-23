@@ -17,21 +17,21 @@ function HeroSliderFive({ data }) {
                 <img
                   src={
                     process.env.PUBLIC_URL +
-                    "/assets/images/hero-slider/five/1.png"
+                    "/assets/images/banners/banner1.png"
                   }
                   alt="Hero slider background image"
                 />
               </div>
               <div className="hero-slider-content-wrapper">
                 <div className="hero-slider-content">
-                  <h5>FRUIT FRESH</h5>
-                  <h1>Orange Lemon</h1>
+                  <h5>Online Shooping in Badulla</h5>
+                  <h1>RMD Food City</h1>
                   <h3>
-                    {formatCurrency(14)} <span>/ Pakage</span>
+                    {formatCurrency(70)} <span>/ Special Food Pack</span>
                   </h3>
                   <Button type="primary" shape="round">
-                    <Link href={process.env.PUBLIC_URL + "/shop/shop-3-column"}>
-                      <a href={process.env.PUBLIC_URL + "/shop/shop-3-column"}>
+                    <Link href={process.env.PUBLIC_URL + "/shop/"}>
+                      <a href={process.env.PUBLIC_URL + "/shop/"}>
                         Shop now
                       </a>
                     </Link>

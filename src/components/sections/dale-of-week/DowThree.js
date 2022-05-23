@@ -18,24 +18,23 @@ function DowThree({ countdownLast = 100000000 }) {
                 <img
                   src={
                     process.env.PUBLIC_URL +
-                    "/assets/images/sections/dale-of-week/three/1.png"
+                    "/assets/images/banners/banner2.png"
                   }
-                  alt="Dale of the week image"
+                  alt=""
                 />
               </div>
             </Col>
             <Col md={10}>
               <div className="dow-three-content">
                 <SectionTitle
-                  title="Deal of the week"
+                  title="Weekly Deal Pack"
                   className="-coffee -left"
                 />
                 <h5>
                   {formatCurrency(19)} <span> / Pakage</span>
                 </h5>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisiing elit, sed
-                  do eiusmod tempor incididunt ut labore et
+                  Weekly special pack contains Fresh Milk 1L Package + Munchee Tikiri Maari 300g Packet + Maggiee Nooddles + Maliban Cream Cracker
                 </p>
                 <Countdown
                   date={Date.now() + countdownLast}
