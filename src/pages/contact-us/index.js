@@ -118,10 +118,10 @@ function contactUs() {
                   <Form.Item
                     name="subject"
                     rules={[
-                      { required: true, message: "Please input your name!" },
+                      { required: true, message: "Please input your subject!" },
                     ]}
                   >
-                    <Input placeholder="Name" />
+                    <Input placeholder="Subject" />
                   </Form.Item>
                 </Col>
                 <Col span={24}>

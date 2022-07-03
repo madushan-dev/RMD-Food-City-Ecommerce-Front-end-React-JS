@@ -91,14 +91,7 @@ const login = () => {
                   >
                     <Input.Password />
                   </Form.Item>
-                  <Form.Item
-                    className="form-functions"
-                    name="remember"
-                    valuePropName="checked"
-                  >
-                    <Checkbox>Remember me</Checkbox>
-                    <Button type="link">Forget your password</Button>
-                  </Form.Item>
+       
                   <Form.Item className="form-submit">
                     <Button type="primary" htmlType="submit">
                       Signin

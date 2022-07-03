@@ -32,7 +32,7 @@ const ReviewItem = ({ data }) => {
 function ProductDetailTab({ fullDescription, reviews,productid }) {
   const onFinish = (values) => {
     values.product_id = productid;
-    values.logged_user = sessionStorage.getItem('cus_id');
+    values.logged_user = localStorage.getItem('cus_id');
 
     onAddReviews({
       values,
@@ -72,7 +72,7 @@ function ProductDetailTab({ fullDescription, reviews,productid }) {
 
               {
 
-              sessionStorage.getItem('cus_name') ?      
+              localStorage.getItem('cus_id') ?      
 
                 <div className="product-detail-tab__reviews-form">
               <h5>Add Review</h5>

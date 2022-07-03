@@ -48,7 +48,7 @@ function checkout() {
 
       if (res && res!=null) {
         message.success("You order succcessfully placed!");
-        // window.location.href = "/shop/order-complete";
+        window.location.href = "/shop/order-complete";
       } else {
         message.error("Can not place order");
       }
