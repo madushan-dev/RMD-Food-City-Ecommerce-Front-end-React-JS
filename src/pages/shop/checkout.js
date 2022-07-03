@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import axiosService from "../../common/axiosService";
+import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
 import {
   Form,
@@ -10,6 +12,7 @@ import {
   Select,
   Radio,
   Breadcrumb,
+  message
 } from "antd";
 import { useRouter } from "next/router";
 
@@ -22,10 +25,39 @@ import FetchDataHandle from "../../components/other/FetchDataHandle";
 
 function checkout() {
   const [paymentMethod, setPaymentMethod] = useState("cod");
+  const [ totalpayment, settotalpayment] = useState([]);
   const router = useRouter();
   const cartState = useSelector((state) => state.cartReducer);
   const onFinish = (values) => {
-    router.push("/shop/order-complete");
+
+    values.cus_id = loggeduser;
+    values.payment_method = paymentMethod;
+    values.totalpayment = totalpayment;
+    values.cartproducts= cartState.data;
+    console.log(values);
+
+
+    let endpoint = `http://127.0.0.1:8000/api/checkout`;
+
+    axios({
+      method: "post",
+      url: endpoint,
+      data: values,
+     
+    }).then(res => {
+
+      if (res && res!=null) {
+        message.success("You order succcessfully placed!");
+        // window.location.href = "/shop/order-complete";
+      } else {
+        message.error("Can not place order");
+      }
+     });
+
+     
+
+
+  
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -33,6 +65,46 @@ function checkout() {
   const onChoosePaymentMethod = (e) => {
     setPaymentMethod(e.target.value);
   };
+
+
+  const [loggeduser, setloggeduser] = useState();
+  const [ results, setResults] = useState([]);
+
+  const [ firstname, setfirstname] = useState("");
+  const [ lastname, setlastname] = useState([]);
+  const [ email, setemail] = useState([]);
+  const [ phone, setphone] = useState([]);
+  const [ address, setaddress] = useState([]);
+
+
+  useEffect(() => {
+    setloggeduser(localStorage.getItem('cus_id'));   
+    getAPIresults();
+    settotalpayment(calculateTotalPrice(cartState.data));
+
+  },[]);
+
+  const getAPIresults = async () => {
+    let endpoint = `http://127.0.0.1:8000/api/auth/customerdata/${localStorage.getItem('cus_id')}`;
+    await axiosService.get(endpoint)
+        .then((response)=>{
+          setResults(response.data);
+          setfirstname(response.data.first_name);
+          setlastname(response.data.last_name);
+          setemail(response.data.email);
+          setaddress(response.data.address);
+          setphone(response.data.phone);
+
+       
+          })
+          .catch((error)=>{
+            console.log(error)
+          })    
+
+        
+}
+
+
   return (
     <LayoutOne title="Checkout">
       <Container>
@@ -48,18 +120,19 @@ function checkout() {
         <FetchDataHandle
           emptyDescription="No product in cart"
           data={cartState}
-          renderData={(data) => (
+          renderData={( data) => (
             <div className="checkout">
               <Row gutter={50}>
                 <Col xs={24} md={16}>
                   <div className="checkout-form">
-                    <h3 className="checkout-title">Billing details</h3>
+                    <h3 className="checkout-title">Delivery Details</h3>
                     <Form
                       name="checkout"
                       layout="vertical"
                       onFinish={onFinish}
                       onFinishFailed={onFinishFailed}
                       id="checkout-form"
+                      
                     >
                       <Row gutter={15}>
                         <Col xs={24} sm={12}>
@@ -68,12 +141,12 @@ function checkout() {
                             name="firstname"
                             rules={[
                               {
-                                required: true,
+                         
                                 message: "Please input your first name!",
                               },
                             ]}
                           >
-                            <Input />
+                            <Input placeholder={firstname}/>
                           </Form.Item>
                         </Col>
                         <Col xs={24} sm={12}>
@@ -82,76 +155,27 @@ function checkout() {
                             name="lastname"
                             rules={[
                               {
-                                required: true,
+                          
                                 message: "Please input your last name!",
                               },
                             ]}
                           >
-                            <Input />
+                            <Input placeholder={lastname}/>
                           </Form.Item>
                         </Col>
+                  
                         <Col span={24}>
                           <Form.Item
-                            label="Company name (optional)"
-                            name="company"
-                          >
-                            <Input />
-                          </Form.Item>
-                        </Col>
-                        <Col span={24}>
-                          <Form.Item
-                            label="Country"
-                            name="country"
-                            rules={[
-                              {
-                                required: true,
-                                message: "Please choose your country!",
-                              },
-                            ]}
-                          >
-                            <Select defaultValue="vietnam">
-                              <Select.Option value="vietnam">
-                                vietnam
-                              </Select.Option>
-                              <Select.Option value="usa">USA</Select.Option>
-                              <Select.Option value="japan">japan</Select.Option>
-                            </Select>
-                          </Form.Item>
-                        </Col>
-                        <Col span={24}>
-                          <Form.Item
-                            label="Street address"
-                            name="street"
-                            rules={[
-                              {
-                                required: true,
-                                message: "Please input your street addres!",
-                              },
-                            ]}
-                          >
-                            <Input />
-                          </Form.Item>
-                        </Col>
-                        <Col span={24}>
-                          <Form.Item
-                            label="Postcode / ZIP (optional)"
-                            name="zip"
-                          >
-                            <Input />
-                          </Form.Item>
-                        </Col>
-                        <Col span={24}>
-                          <Form.Item
-                            label="Town / City"
+                            label="Address"
                             name="city"
                             rules={[
                               {
-                                required: true,
-                                message: "Please input your Town/City!",
+                           
+                                message: "Please input your address!",
                               },
                             ]}
                           >
-                            <Input />
+                            <Input placeholder={address}/>
                           </Form.Item>
                         </Col>
                         <Col span={24}>
@@ -160,12 +184,12 @@ function checkout() {
                             name="phone"
                             rules={[
                               {
-                                required: true,
+                            
                                 message: "Please input your phone!",
                               },
                             ]}
                           >
-                            <Input />
+                            <Input placeholder={phone}/>
                           </Form.Item>
                         </Col>
                         <Col span={24}>
@@ -174,12 +198,20 @@ function checkout() {
                             name="email"
                             rules={[
                               {
-                                required: true,
+                         
                                 message: "Please input your email address!",
                               },
                             ]}
                           >
-                            <Input />
+                            <Input placeholder={email}/>
+                          </Form.Item>
+                        </Col>
+                        <Col span={24}>
+                          <Form.Item
+                            label="Ref ID"
+                            name="affiliate_id"
+                            >
+                            <Input/>
                           </Form.Item>
                         </Col>
                       </Row>
@@ -191,7 +223,7 @@ function checkout() {
                     <h3 className="checkout-title">Your order</h3>
                     <table className="checkout-total__table">
                       <tbody>
-                        {console.log(data)}
+       
                         {data.map((item, index) => (
                           <tr key={index}>
                             <td>
@@ -214,6 +246,8 @@ function checkout() {
                             style={{ fontSize: 20 / 16 + "em" }}
                             className="-bold -color"
                           >
+                           
+
                             {formatCurrency(calculateTotalPrice(data))}
                           </td>
                         </tr>
@@ -227,8 +261,8 @@ function checkout() {
                         <Radio style={{ display: "block" }} value="cod">
                           Cash on delivery
                         </Radio>
-                        <Radio style={{ display: "block" }} value="paypal">
-                          Paypal
+                        <Radio style={{ display: "block" }} value="card">
+                          Card Payment
                         </Radio>
                       </Radio.Group>
                     </div>

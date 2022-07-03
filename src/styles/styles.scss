@@ -54,3 +54,118 @@
 @import "pages/product-detail";
 @import "pages/shop";
 @import "pages/wishlist";
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+.dasboard-container{
+    display: flex;
+    margin: 30px 0;
+}
+.dasboard-content{
+    width: 100%;
+    margin: 0 30px;
+}
+
+.dashboard-menu{
+    list-style: none;
+    background-color: rgb(223, 71, 89);
+    padding: 10px 20px;
+    margin: 5px 0px;
+    width: 200px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}
+.dashboard-menu:hover{
+    background-color: rgb(173, 40, 55);
+}
+.orders-table{
+    width: 90%;
+}
+
+.table-heading,.data-column{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+}
+.btn-order-view{
+    background-color: rgb(173, 40, 55); /* Green */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+}
+.btn-order-view:hover{
+    background-color: rgb(141, 31, 44);;
+}
+.active-menu{
+    background-color: rgb(141, 31, 44);;
+}
+
+.processing{
+    background-color: orange;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap
+}
+.cancelled{
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap
+}
+.on-delivery{
+    background-color: rgb(0, 131, 218);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap
+}
+.completed{
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap
+}
+.order-heading{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.order-details-table{
+    width: 100%;
+    margin-left: 50px;
+
+}
+.order-details-table .data-column{
+    font-weight: bold;
+}
+.edit-form{
+    width: 80%;
+    margin: auto;
+}
+.edit-title{
+    text-align: center;
+}
+.profile-stats{
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+.stat-item{
+    background-color: #ccc;
+    padding: 20px 50px;
+    font-weight: bold;
+    text-transform:uppercase;
+}

@@ -1,5 +1,5 @@
 import { Button, Col, Rate, Row, message } from "antd";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 
@@ -25,9 +25,18 @@ export default function ProductDetailContent({ data, type }) {
   const compareState = useSelector((state) => state.compareReducer);
   const productInCompare = checkProductInWishlist(compareState, data.id);
   const avaiableQuantity =
-    data.quantity - checkProductCartQuantity(cartState.data, data.id);
-  console.log(avaiableQuantity);
-  const onAddToCart = (product, quantity) => {
+    data.count - checkProductCartQuantity(cartState.data, data.id);
+
+    const [loggeduser, setloggeduser] = useState();
+
+    useEffect(() => {
+      setloggeduser( localStorage.getItem('cus_id'));
+    },[]);
+
+
+
+
+  const onAddToCart = (product, quantity,loggeduser) => {
     if (addToCartLoading) {
       return;
     }
@@ -35,6 +44,7 @@ export default function ProductDetailContent({ data, type }) {
     onAddProductToCart({
       product,
       quantity,
+      loggeduser,
       onSuccess: (data) => {
         setAddToCartLoading(false);
         message.success("Product added to cart");
@@ -134,7 +144,7 @@ export default function ProductDetailContent({ data, type }) {
               <div className="product-detail-content__actions">
                 <Button
                   loading={addToCartLoading}
-                  onClick={() => onAddToCart(data, currentQuantity)}
+                  onClick={() => onAddToCart(data, currentQuantity,loggeduser)}
                   shape="round"
                 >
                   Add to cart
@@ -185,7 +195,7 @@ export default function ProductDetailContent({ data, type }) {
       <div className="product-detail-content__actions">
         <Button
           loading={addToCartLoading}
-          onClick={() => onAddToCart(data, currentQuantity)}
+          onClick={() => onAddToCart(data, currentQuantity,loggeduser)}
           shape="round"
         >
           Add to cart

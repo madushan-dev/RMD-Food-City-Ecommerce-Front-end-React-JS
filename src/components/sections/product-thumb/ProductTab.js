@@ -70,7 +70,7 @@ function ProductTab({
                 }
               : null
           }
-          defaultActiveKey="1"
+          defaultActiveKey="0"
           centered={headerType === "row" ? false : true}
           onChange={onChooseCategory}
         >

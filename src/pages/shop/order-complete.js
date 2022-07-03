@@ -22,11 +22,11 @@ export default function orderComplete() {
         <ShopOrderStep current={3} />
         <div className="order-complete">
           <h1>
-            Congratulation! You’ve <span>completed</span> payment
+            Congratulation! You’ve <span>Placed</span> the Order
           </h1>
         </div>
         <Benefits threeCol className="-bordered" />
-        <PartnerOne />
+
       </Container>
     </LayoutOne>
   );

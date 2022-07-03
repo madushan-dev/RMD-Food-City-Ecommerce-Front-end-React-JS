@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, message, Rate, Tooltip, Modal } from "antd";
 import Link from "next/link";
@@ -31,19 +31,29 @@ function Product({ data, className, type, countdownLast = 100000000 }) {
   const compareState = useSelector((state) => state.compareReducer);
   const productInWishlist = checkProductInWishlist(wishlistState.data, data.id);
   const productInCompare = checkProductInWishlist(compareState, data.id);
+
+
+  const [loggeduser, setloggeduser] = useState();
+
+  useEffect(() => {
+    setloggeduser( localStorage.getItem('cus_id'));
+  },[]);
+
+
   const showModal = () => {
     setModalVisible(true);
   };
   const onModalClose = (e) => {
     setModalVisible(false);
   };
-  const onAddToCart = (product) => {
+  const onAddToCart = (product,loggeduser) => {
     if (addToCartLoading) {
       return;
     }
     setAddToCartLoading(true);
     onAddProductToCart({
       product,
+      loggeduser,
       onSuccess: (data) => {
         setAddToCartLoading(false);
         message.success("Product added to cart");
@@ -276,12 +286,12 @@ function Product({ data, className, type, countdownLast = 100000000 }) {
                 defaultValue={data.rate}
               />
               <p className="product-description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor niam
+           
               </p>
-              {data.quantity > 0 ? (
+              {console.log(data)}
+              {data.count > 0 ? (
                 <h5 className="product-availability -instock">
-                  Availability: <span> {data.quantity} in stock</span>
+                  Availability: <span> {data.count} in stock</span>
                 </h5>
               ) : (
                 <h5 className="product-availability -outstock">
@@ -305,14 +315,14 @@ function Product({ data, className, type, countdownLast = 100000000 }) {
               </h3>
               <div className="product-detail-content__actions">
                 <Button
-                  onClick={() => onAddToCart(data)}
+                  onClick={() => onAddToCart(data,loggeduser)}
                   loading={addToCartLoading}
                   shape="round"
                 >
                   Add to cart
                 </Button>
                 <Button
-                  onClick={() => onAddToCompare(data)}
+                  onClick={() => onAddToCompare(data,loggeduser)}
                   shape="round"
                   className={classNames({
                     active: productInCompare,
@@ -355,26 +365,10 @@ function Product({ data, className, type, countdownLast = 100000000 }) {
               </h3>
             </div>
             <div className="product-select">
-              <Tooltip title="Add to wishlist">
-                <Button
-                  onClick={() => onAddWishlist(data)}
-                  className={`product-btn ${classNames({
-                    active: productInWishlist,
-                  })}`}
-                  type="primary"
-                  shape="round"
-                  icon={
-                    addToWishlistLoading ? (
-                      <LoadingOutlined spin />
-                    ) : (
-                      <i className="far fa-heart" />
-                    )
-                  }
-                />
-              </Tooltip>
+      
               <Tooltip title="Add to cart">
                 <Button
-                  onClick={() => onAddToCart(data)}
+                  onClick={() => onAddToCart(data,loggeduser)}
                   className="product-btn"
                   type="primary"
                   shape="round"
@@ -387,17 +381,7 @@ function Product({ data, className, type, countdownLast = 100000000 }) {
                   }
                 />
               </Tooltip>
-              <Tooltip title="Add to compare">
-                <Button
-                  onClick={() => onAddToCompare(data)}
-                  className={`product-btn ${classNames({
-                    active: productInCompare,
-                  })}`}
-                  type="primary"
-                  shape="round"
-                  icon={<i className="far fa-random" />}
-                />
-              </Tooltip>
+           
               <Tooltip title="Quick view">
                 <Button
                   onClick={showModal}

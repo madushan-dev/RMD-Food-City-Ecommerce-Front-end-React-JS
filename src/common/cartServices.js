@@ -6,13 +6,16 @@ import {
   removeCartData,
 } from "../apis/cart";
 
+
 export const onAddProductToCart = ({
   product,
   quantity = 1,
+  loggeduser,
   onSuccess,
   onError,
   getQuantityAvailable = () => true,
 }) => {
+
   fetchProductIdCartData(product.id)
     .then((res) => {
       if (res.data.length === 0) {
@@ -21,16 +24,17 @@ export const onAddProductToCart = ({
           getQuantityAvailable && getQuantityAvailable(false);
         } else {
           addCartData({
-            ...product,
+            ...product, 
             id: uuidv4(),
             productId: product.id,
             cartQuantity: quantity,
+            user_id:loggeduser
           })
             .then((res) => onSuccess && onSuccess(res))
             .catch(
               (err) =>
                 onError &&
-                onError("Add product to cart failed, please try again", err)
+                onError("Add product to cart failed, please logged in!", err)
             );
         }
       } else {
@@ -44,7 +48,9 @@ export const onAddProductToCart = ({
         } else {
           updateCartData(pData.id, {
             productId: product.id,
-            cartQuantity: quantity
+            cartQuantity: quantity,
+            user_id:loggeduser
+
           })
             .then((res) => {
               onSuccess && onSuccess(res);
@@ -52,14 +58,14 @@ export const onAddProductToCart = ({
             .catch(
               (err) =>
                 onError &&
-                onError("Add product to cart failed, please try again", err)
+                onError("Add product to cart failed, please logged in!", err)
             );
         }
       }
     })
     .catch(
       (err) =>
-        onError && onError("Add product to cart failed, please try again", err)
+        onError && onError("Add product to cart failed, please logged in!", err)
     );
 };
 
@@ -69,7 +75,7 @@ export const onRemoveProductFromCart = ({ cartId, onSuccess, onError }) => {
       .then((res) => onSuccess && onSuccess(res))
       .catch(
         (err) =>
-          onError && onError("Remove product failm, pleaser try again", err)
+          onError && onError("Remove product fail, pleaser try again", err)
       );
   }
 };

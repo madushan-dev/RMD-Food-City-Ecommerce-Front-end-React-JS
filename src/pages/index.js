@@ -58,15 +58,26 @@ export default function homepage5() {
       headerClass="-coffee -no-space"
       footerClass="-coffee"
     >
+
+      {/* Banner Section */}
+
       <HeroSliderFive data={heroslideOneData.one} />
+      
+      
+      {/* Options */}
       <Container>
         <Benefits
           className="-bordered"
           style={{ marginBottom: 30 / 16 + "em" }}
         />
       </Container>
+
+      {/* Double banners */}
       <BannerFour data={bannerData.four} />
       <Container>
+
+
+        {/* Latest Products Tabbbed */}
         <ProductTab
           style={{ marginBottom: 30 / 16 + "em" }}
           data={featuredProducts}
@@ -82,8 +93,17 @@ export default function homepage5() {
           className="-coffee"
         />
       </Container>
+
+      {/*  */}
+
+      {/* Deals Section */}
       <DowThree />
+
+      {/*  Banners in Down*/}
       <BannerFour data={bannerData.five} />
+
+
+      {/*  Three Colum Products*/}
       <Container>
         <Row gutter={30} style={{ marginBottom: 70 / 16 + "rem" }}>
           <Col md={8}>

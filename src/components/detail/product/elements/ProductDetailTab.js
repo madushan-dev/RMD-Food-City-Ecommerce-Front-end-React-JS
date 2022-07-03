@@ -1,8 +1,14 @@
-import React from "react";
-import { Rate, Tabs, Form, Input, Button, Row, Col } from "antd";
+import React from 'react';
+import { Rate, Tabs, Form, Input, Button, Row, Col,message } from "antd";
+import ReviewExcept from "../../../other/ReviewExcept";
+import { onAddReviews } from "../../../../common/reviewsServices";
+
+
+
+
+
 
 const { TabPane } = Tabs;
-
 const ReviewItem = ({ data }) => {
   console.log(data);
   return (
@@ -23,9 +29,23 @@ const ReviewItem = ({ data }) => {
   );
 };
 
-function ProductDetailTab({ fullDescription, reviews }) {
+function ProductDetailTab({ fullDescription, reviews,productid }) {
   const onFinish = (values) => {
-    console.log("Success:", values);
+    values.product_id = productid;
+    values.logged_user = sessionStorage.getItem('cus_id');
+
+    onAddReviews({
+      values,
+      onSuccess: (data) => {
+        message.success("Your review is successfully submitted!. Wait for Admin approve");
+      },
+      onError: (mes, err) => {
+        message.error(mes);
+        console.log(err);
+      },
+    });
+
+
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -45,7 +65,16 @@ function ProductDetailTab({ fullDescription, reviews }) {
             {reviews.map((item, index) => (
               <ReviewItem key={index} data={item} />
             ))}
-            <div className="product-detail-tab__reviews-form">
+
+
+
+
+
+              {
+
+              sessionStorage.getItem('cus_name') ?      
+
+                <div className="product-detail-tab__reviews-form">
               <h5>Add Review</h5>
               <Form
                 name="review"
@@ -53,26 +82,7 @@ function ProductDetailTab({ fullDescription, reviews }) {
                 onFinishFailed={onFinishFailed}
               >
                 <Row gutter={15}>
-                  <Col xs={24} md={12}>
-                    <Form.Item
-                      name="name"
-                      rules={[
-                        { required: true, message: "Please input your name!" },
-                      ]}
-                    >
-                      <Input placeholder="Name" />
-                    </Form.Item>
-                  </Col>
-                  <Col xs={24} md={12}>
-                    <Form.Item
-                      name="email"
-                      rules={[
-                        { required: true, message: "Please input your email!" },
-                      ]}
-                    >
-                      <Input placeholder="Email" />
-                    </Form.Item>
-                  </Col>
+                  
                   <Col span={24}>
                     <Form.Item name="rate" label="Your rating">
                       <Rate />
@@ -92,7 +102,13 @@ function ProductDetailTab({ fullDescription, reviews }) {
                   </Col>
                 </Row>
               </Form>
-            </div>
+            </div> :
+            <ReviewExcept/>
+
+              }
+
+
+            
           </div>
         </TabPane>
       </Tabs>

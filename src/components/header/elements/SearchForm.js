@@ -22,23 +22,28 @@ function SearchForm({ enterButton = "Search", hideSelect }) {
   };
   const onSelectOption = (value, option) => {
     setCurrentSearch(value);
+    setCurrentSearch(value);
+    router.push({
+     pathname: process.env.PUBLIC_URL + `/product/${option.pid}`,
+   });
   };
   const onSearch = (val) => {
     if (!currentSearch || currentSearch === "") {
       return;
     } else {
-      router.push({
-        pathname: process.env.PUBLIC_URL + "/shop/shop-3-column",
-        query: { q: currentSearch },
-      });
+      // router.push({
+      //   pathname: process.env.PUBLIC_URL + "/shop/shop-3-column",
+      //   query: { q: currentSearch },
+      // });
     }
   };
   const onChooseCateogry = (val) => {
     setCurrentCategory(val);
+    
   };
   const options =
     searchedProducts.data.length > 0 &&
-    searchedProducts.data.map((item) => ({ value: item.name }));
+    searchedProducts.data.map((item) => ({ value: item.name,pid: item.id }));
 
   useEffect(() => {
     dispatch(

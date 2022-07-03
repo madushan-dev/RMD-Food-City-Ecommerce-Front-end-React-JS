@@ -27,9 +27,14 @@ function cart() {
     cartId: null,
   });
   const cartState = useSelector((state) => state.cartReducer);
+  
 
+  const [loggeduser, setloggeduser] = useState();
   useEffect(() => {
-    dispatch(fetchCartRequest());
+    setloggeduser( localStorage.getItem('cus_id'));
+    fetchCartRequest(loggeduser);
+ 
+    
   }, []);
   const showModal = (message, cartId) => {
     setModalState({ ...modalState, visible: true, message: message, cartId });
@@ -116,7 +121,7 @@ function cart() {
                   <tbody>
             
      
-                    {console.log(data)}
+              
                     {data.map((item, index) => (
                       
                       <tr key={index}>

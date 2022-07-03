@@ -44,6 +44,7 @@ function ProductDetailLayout({ data, type, hideTab, style }) {
             <ProductDetailTab
               fullDescription={data.description}
               reviews={data.reviews}
+              productid={data.id}
             />
           )}
         </Col>

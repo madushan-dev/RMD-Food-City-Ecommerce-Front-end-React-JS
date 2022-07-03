@@ -31,7 +31,7 @@ function DowThree({ countdownLast = 100000000 }) {
                   className="-coffee -left"
                 />
                 <h5>
-                  {formatCurrency(19)} <span> / Pakage</span>
+                  {formatCurrency(2550)} <span> / Pakage</span>
                 </h5>
                 <p>
                   Weekly special pack contains Fresh Milk 1L Package + Munchee Tikiri Maari 300g Packet + Maggiee Nooddles + Maliban Cream Cracker
@@ -59,8 +59,8 @@ function DowThree({ countdownLast = 100000000 }) {
                   }}
                 />
                 <Button type="primary" shape="round">
-                  <Link href={process.env.PUBLIC_URL + "/shop/shop-3-column"}>
-                    <a href={process.env.PUBLIC_URL + "/shop/shop-3-column"}>
+                  <Link href={process.env.PUBLIC_URL + "/shop/"}>
+                    <a href={process.env.PUBLIC_URL + "/shop/"}>
                       Shop now
                     </a>
                   </Link>

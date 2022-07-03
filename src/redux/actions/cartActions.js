@@ -21,11 +21,11 @@ export const fetchCartFail = (err) => ({
   },
 });
 
-export const fetchCartRequest = () => {
+export const fetchCartRequest = (loggeduser) => {
+
   return (dispatch) => {
-    dispatch(fetchCart());
     cartApis
-      .fetchCartData()
+      .fetchCartData(loggeduser)
       .then((res) => {
         dispatch(fetchCartSuccess(res.data));
       })

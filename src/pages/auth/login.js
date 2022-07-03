@@ -1,13 +1,45 @@
-import { Breadcrumb, Form, Input, Button, Checkbox, Row, Col } from "antd";
+import { Breadcrumb, Form, Input, Button, Checkbox, Row, Col,message } from "antd";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import Router from "next/router";
 
 import LayoutOne from "../../components/layout/LayoutOne";
 import Container from "../../components/other/Container";
+import { onLogin } from "../../common/authServices";
+
+
+
 
 const login = () => {
+
+  const [loggeduser, setloggeduser] = useState(0);
+
+  useEffect(() => {
+    setloggeduser( localStorage.getItem('cus_name'));
+  });
+  
+  if(loggeduser){
+    Router.push("/dashboard");
+  }
+  
   const onFinish = (values) => {
-    console.log("Success:", values);
+
+
+
+    onLogin({
+      values,
+      onSuccess: (data) => {
+    
+        message.success("You have succcessfully logged in!");
+        Router.push("/dashboard");
+   
+
+      },
+      onError: (mes, err) => {
+        message.error(mes);
+        console.log(err);
+      },
+    });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -35,12 +67,12 @@ const login = () => {
                   onFinishFailed={onFinishFailed}
                 >
                   <Form.Item
-                    label="Username or email address"
-                    name="username"
+                    label="Email address"
+                    name="email"
                     rules={[
                       {
                         required: true,
-                        message: "Please input your username!",
+                        message: "Please input your email!",
                       },
                     ]}
                   >

@@ -1,13 +1,23 @@
-import { Breadcrumb, Row, Col, Form, Input, Button } from "antd";
+import { Breadcrumb, Row, Col, Form, Input, Button,message } from "antd";
 import React from "react";
 
 import LayoutOne from "../../components/layout/LayoutOne";
 import Container from "../../components/other/Container";
 import SectionTitle from "../../components/other/SectionTitle";
+import { onAddContact } from "../../common/messageServices";
 
 function contactUs() {
   const onFinish = (values) => {
-    console.log("Success:", values);
+    onAddContact({
+      values,
+      onSuccess: (data) => {
+        message.success("Your message is submitted!. Wait for reply from us");
+      },
+      onError: (mes, err) => {
+        message.error(mes);
+        console.log(err);
+      },
+    });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -96,12 +106,22 @@ function contactUs() {
                 </Col>
                 <Col xs={24} md={12}>
                   <Form.Item
-                    name="email"
+                    name="from"
                     rules={[
                       { required: true, message: "Please input your email!" },
                     ]}
                   >
                     <Input placeholder="Email" />
+                  </Form.Item>
+                </Col>
+                <Col xs={24} md={24}>
+                  <Form.Item
+                    name="subject"
+                    rules={[
+                      { required: true, message: "Please input your name!" },
+                    ]}
+                  >
+                    <Input placeholder="Name" />
                   </Form.Item>
                 </Col>
                 <Col span={24}>

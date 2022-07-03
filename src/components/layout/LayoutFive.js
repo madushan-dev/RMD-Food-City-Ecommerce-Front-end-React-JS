@@ -5,6 +5,10 @@ import { BackTop } from "antd";
 import HeaderOne from "../header/HeaderOne";
 import Footer from "../footer/Footer";
 import withHeaderScroll from "../../common/withHeaderScroll";
+import axios from 'axios';
+
+
+
 
 const ScrolledHeader = withHeaderScroll(HeaderOne);
 

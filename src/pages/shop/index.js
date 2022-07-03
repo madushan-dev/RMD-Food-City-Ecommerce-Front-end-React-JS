@@ -58,10 +58,13 @@ function shopGrid3Column() {
           <div className="shop-content">
             <Row gutter={30}>
               <Col xs={24} lg={6}>
+                {/* Shop Side Bar */}
                 <ShopSidebar style={{ marginTop: 10 / 16 + "em" }} />
               </Col>
               <Col xs={24} lg={18}>
                 <ShopHeader title="Shop" />
+
+                {/* Product Grid */}
                 <ProductGrid
                   data={products}
                   hideHeader

@@ -28,6 +28,7 @@ export const fetchProductsData = (query) => {
 };
 
 
+// Products APIs
 
 export const fetchSaleProductsData = (query) => {
   let endpoint = 'http://127.0.0.1:8000/api/products?results=9&type=saleproducts';
@@ -57,12 +58,7 @@ export const fetchProductDetailData = (slug) => {
 
 //Fetch serched product by query
 export const fetchSearchedProductData = (query) => {
-  let endpoint =
-    API_URL +
-    url +
-    "?" +
-    renderParam("q", query.input) +
-    renderParam("category", query.category) +
-    renderParam("limit", query.limit);
+
+  let endpoint = `http://127.0.0.1:8000/api/search/?product=${query.input}&category=${query.category}`;
   return axiosService.get(endpoint);
 };
