@@ -33,7 +33,7 @@ export default function OrdersList(props) {
       <tr className="table-data">
         <td className="data-column">{props.data.id}</td>
         <td className="data-column">{props.data.customers.first_name +" " + props.data.customers.last_name}</td>
-        <td className="data-column">{props.data.date}</td>
+        <td className="data-column">{props.data.date.slice(0, -3)}</td>
         <td className="data-column">Rs. {props.data.payment_amount}.00</td>
         <td className="data-column">{props.data.payment_type}</td>
         <td className="data-column "><span className={statusclass}>{props.data.status}</span></td>

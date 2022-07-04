@@ -21,7 +21,9 @@ const ReviewItem = ({ data }) => {
         <Rate defaultValue={data.rating} disabled />
       </div>
       <div className="product-detail-tab__reviews-item__content">
-        <h5>{data.created_at}</h5>
+   
+
+        <h5>{data.created_at.split("T")[0]}</h5>
         <h3>{data.customers.first_name+" "+data.customers.last_name}</h3>
         <p>{data.comment}</p>
       </div>

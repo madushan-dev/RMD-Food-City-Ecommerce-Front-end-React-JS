@@ -52,7 +52,7 @@ function contactUs() {
                 <div className="contact-methods-item">
                   <i className="fal fa-map-marker-alt" />
                   <p>305 Gonagala - Passara Rd</p>
-                  <p>NHindagoda</p>
+                  <p>Hindagoda</p>
                 </div>
               </Col>
               <Col xs={24} md={8}>

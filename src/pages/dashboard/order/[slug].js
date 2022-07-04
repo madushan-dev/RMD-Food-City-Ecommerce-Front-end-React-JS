@@ -138,7 +138,7 @@ const logouthandler = () => {
           </tr>
           <tr>
             <th className="table-heading">Date:</th>
-            <td className="data-column">{orderdate}</td>
+            <td className="data-column">{orderdate.slice(0, -3)}</td>
           </tr>
           <tr>
             <th className="table-heading">Payment:</th>
