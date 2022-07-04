@@ -142,7 +142,7 @@ const logouthandler = () => {
           </tr>
           <tr>
             <th className="table-heading">Payment:</th>
-            <td className="data-column">Rs {orderpayment}.00</td>
+            <td className="data-column">Rs {orderpayment}</td>
           </tr>
           <tr>
             <th className="table-heading">Type:</th>

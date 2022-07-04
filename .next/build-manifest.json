@@ -31,10 +31,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/dashboard/order/[slug]": [
+    "/dashboard": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/dashboard/order/[slug].js"
+      "static/chunks/pages/dashboard.js"
     ]
   },
   "ampFirstPages": []
